@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -39,16 +40,11 @@ public class PlayerHealth : MonoBehaviour
         // Update the health bar UI
         UpdateHealthUI();
 
-        // For testing: Take damage when 'A' key is pressed
-        if (Input.GetKeyDown(KeyCode.A))
+        //back to main menu scene
+        if (health <= 0)
         {
-            TakeDamage(Random.Range(5, 10));
-        }
-
-        // For testing: Restore health when 'S' key is pressed
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            RestoreHealth(Random.Range(5, 10));
+            // Load the main menu scene
+            SceneManager.LoadScene("GameOver");
         }
     }
 
